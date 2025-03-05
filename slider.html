@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+</head>
+<body>
+<h2>Image Slider</h2>
+<img id="slider" src="" width="300" height="200" alt="Image">
+<br>
+<button onclick="prevImage()">Previous</button>
+<button onclick="nextImage()">Next</button>
+
+<script>
+    let images = [
+        "https://picsum.photos/id/237/300/200",
+        "https://picsum.photos/id/238/300/200",
+        "https://picsum.photos/id/239/300/200"
+    ];
+
+    let currentIndex = 0;
+    let imgElement = document.getElementById("slider");
+
+    function showImage() {
+        imgElement.src = images[currentIndex];
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage();
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage();
+    }
+
+    showImage(); // Load first image
+</script>
+</body>
+</html>
